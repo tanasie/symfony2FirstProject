@@ -64,6 +64,9 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+#Send mail configuration using service container
+imports:
+    - { resource: "@AcmeStoreBundle/Resources/config/services.yml" }
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -71,3 +74,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+sensio_framework_extra:
+    view:    { annotations : false }
+    router:  { annotations : true }
+
+fos_rest:
+    view:
+        view_response_listener: true

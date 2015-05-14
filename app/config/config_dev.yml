@@ -46,3 +46,15 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+# Doctrine MongoDB
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost
+            options: {}
+    default_database: mongodb
+    document_managers:
+        default:
+            auto_mapping: true
+

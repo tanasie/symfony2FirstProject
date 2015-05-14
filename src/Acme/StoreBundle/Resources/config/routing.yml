@@ -1,0 +1,21 @@
+acme_store_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AcmeStoreBundle:Default:index }
+
+acme_create_product:
+    path:     /createProduct
+    defaults: { _controller: AcmeStoreBundle:Product:createProduct }
+    methods: [GET]
+
+
+acme_show_product:
+    path:     /showProduct/{id}
+    defaults: { _controller: AcmeStoreBundle:Product:showProduct }
+
+acme_show_products_by_name:
+    path:     /showProducts/{name}
+    defaults: { _controller: AcmeStoreBundle:Product:getAllProductsByName }
+
+acme_show_all_products:
+    path:     /showAll
+    defaults: { _controller: AcmeStoreBundle:Product:showAllProducts }
