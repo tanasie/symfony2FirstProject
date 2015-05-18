@@ -1,0 +1,5 @@
+acme_category_Category:
+    type: rest
+    prefix: /v1
+    resource: "Acme\CategoryBundle\Controller\CategoryController"
+    name_prefix:  api_1_ # naming collision

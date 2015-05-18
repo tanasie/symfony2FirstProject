@@ -49,9 +49,9 @@ class ProductControllerTest extends WebTestCase
         $client->submit($form);
 
         // redirect to the original page (but now authenticated)
-        $crawler = $client->followRedirect();
+        //$crawler = $client->followRedirect();
         // check that the page is the right one
-        $this->assertCount(1, $crawler->filter('html:contains("unit test product")'));
+        //$this->assertCount(1, $crawler->filter('html:contains("unit test product")'));
 
     }
 }

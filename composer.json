@@ -24,7 +24,8 @@
         "doctrine/mongodb-odm": "1.0.*@dev",
         "doctrine/mongodb-odm-bundle": "3.0.*@dev",
         "friendsofsymfony/rest-bundle": "@stable",
-        "jms/serializer-bundle": "@stable"
+        "jms/serializer-bundle": "@stable",
+        "nelmio/api-doc-bundle": "@stable"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -19,3 +19,21 @@ acme_show_products_by_name:
 acme_show_all_products:
     path:     /showAll
     defaults: { _controller: AcmeStoreBundle:Product:showAllProducts }
+
+
+acme_store_user_all:
+    pattern:  /users
+    defaults: { _controller: AcmeStoreBundle:User:all, _format: json }
+    requirements:
+        _method: GET
+
+acme_store_user_get:
+    pattern:  /users/{id}
+    defaults: { _controller: AcmeStoreBundle:User:get, _format: ~ }
+    requirements:
+        _method: GET
+        id: "\d+"
+
+acme_store_user_create:
+    pattern:  /userNew
+    defaults: { _controller: AcmeStoreBundle:User:createUser, _format: ~ }

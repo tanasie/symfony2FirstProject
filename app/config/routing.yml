@@ -9,3 +9,12 @@ app:
 product:
     resource: Acme\StoreBundle\Controller\ProductController
     type: rest
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+acme_category:
+    type: rest
+    prefix: /apiRest
+    resource: "@AcmeCategoryBundle/Resources/config/routing.yml"

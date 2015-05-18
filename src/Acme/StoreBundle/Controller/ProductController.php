@@ -5,10 +5,17 @@ namespace Acme\StoreBundle\Controller;
 use Acme\StoreBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\StoreBundle\Document\Product;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use FOS\RestBundle\Controller\Annotations\View;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class ProductController extends Controller
 {
@@ -59,28 +66,26 @@ class ProductController extends Controller
         if (!$product) {
             throw $this->createNotFoundException('No product found for id '.$id);
         }
-        var_dump($product);exit;
         return $this->render('AcmeStoreBundle:Product:showProduct.html.twig', array(
             'product'   => $product
         ));
     }
 
     /**
-     * @Template()
+     * @param Product $product
+     * @View()
      */
     public function showAllProductsAction()
     {
-        /**
-         * @var Product $products
-         */
-
         $products = $this->get('doctrine_mongodb')
             ->getRepository('AcmeStoreBundle:Product')
             ->findAll();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
 
-        return array(
-          'products' => $products,
-        );
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($products,'json');
+        return new JsonResponse($jsonContent);
     }
 
     /**
