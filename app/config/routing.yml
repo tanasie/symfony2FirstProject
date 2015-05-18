@@ -1,14 +1,6 @@
-acme_store:
-    resource: "@AcmeStoreBundle/Resources/config/routing.yml"
-    prefix:   /mongo
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-
-product:
-    resource: Acme\StoreBundle\Controller\ProductController
-    type: rest
 
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
