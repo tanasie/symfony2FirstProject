@@ -1,0 +1,5 @@
+acme_product_Category:
+    type: rest
+    prefix: /v2
+    resource: "Acme\\ProductBundle\\Controller\\ProductController"
+    name_prefix:  api_2_ # naming collision

@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Acme\CategoryBundle\AcmeCategoryBundle(),
+            new Acme\ProductBundle\AcmeProductBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

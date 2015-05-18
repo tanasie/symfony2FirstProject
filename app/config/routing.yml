@@ -16,5 +16,10 @@ NelmioApiDocBundle:
 
 acme_category:
     type: rest
-    prefix: /apiRest
+    prefix: /mongo
     resource: "@AcmeCategoryBundle/Resources/config/routing.yml"
+
+acme_product:
+    type: rest
+    prefix: /mysql
+    resource: "@AcmeProductBundle/Resources/config/routing.yml"

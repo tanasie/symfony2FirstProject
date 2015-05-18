@@ -83,6 +83,7 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/apiRest, priorities: [html, json, xml], fallback_format: html, prefer_extension: false }
+            - { path: ^/apiRestProduct, priorities: [html, json, xml], fallback_format: html, prefer_extension: false }
             - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: html, prefer_extension: true }
     view:
         view_response_listener: true
