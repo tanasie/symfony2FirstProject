@@ -2,7 +2,6 @@
 
 namespace Acme\ProductBundle\Controller;
 
-use Acme\CategoryBundle\Document\Category;
 use Acme\ProductBundle\Entity\Product;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +9,8 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-class ProductController extends FOSRestController
+
+class ProductEntityController extends FOSRestController
 {
 
     public function getProductByIdAction($id)

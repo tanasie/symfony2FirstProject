@@ -9,5 +9,5 @@ acme_category:
 
 acme_product:
     type: rest
-    prefix: /mysql
+    prefix: /
     resource: "@AcmeProductBundle/Resources/config/routing.yml"

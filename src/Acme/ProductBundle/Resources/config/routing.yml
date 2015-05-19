@@ -1,5 +1,11 @@
-acme_product_Category:
+acme_product_document_Category:
     type: rest
-    prefix: /v2
-    resource: "Acme\\ProductBundle\\Controller\\ProductController"
-    name_prefix:  api_2_ # naming collision
+    prefix: /mongo
+    resource: "Acme\\ProductBundle\\Controller\\ProductDocumentController"
+    name_prefix:  mongodb_ # naming collision
+
+acme_product_entity_Category:
+    type: rest
+    prefix: /mysql
+    resource: "Acme\\ProductBundle\\Controller\\ProductEntityController"
+    name_prefix:  mysql_ # naming collision
