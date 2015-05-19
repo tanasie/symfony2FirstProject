@@ -13,3 +13,7 @@ acme_product_entity_Category:
 acme_test_products:
     path:      /test
     defaults:  { _controller: AcmeProductBundle:Test:showAForm }
+
+acme_take_customer:
+    path:      /takeContent
+    defaults:  { _controller: AcmeProductBundle:Customer:takeContent }
