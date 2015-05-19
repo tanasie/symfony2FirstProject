@@ -12,7 +12,7 @@ class ProductControllerTest extends WebTestCase
         $client = static::createClient();
 
         // goes to the secure page
-        $crawler = $client->request('GET', '/apiRestProduct/v2/products/create.json');
+        $crawler = $client->request('GET', '/mongo/products/create.json');
 
         $this->assertCount(1, $crawler->filter('html:contains("lorem ipsum dolor sit amet")'));
 
@@ -27,6 +27,17 @@ class ProductControllerTest extends WebTestCase
 
         $this->assertCount(1,$crawler->filter('html:contains("1.00")'));
 
+    }
+
+    public function testGetProductByName()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('POST','/mongo/products/product1/bies/names.json');
+
+        $crawler = $client->followRedirect();
+
+        $this->assertTrue(strpos($crawler->text(),'555b04cc8ead0eb4000041a8') != false);
     }
 
 }
