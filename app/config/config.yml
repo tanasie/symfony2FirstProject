@@ -79,6 +79,13 @@ sensio_framework_extra:
     view:    { annotations : false }
     router:  { annotations : true }
 
+
+services:
+    product_bundle.listener.product:
+        class: AcmeProductBundleEventListenerProductListener
+        tags:
+        – { name: kernel.event_listener, event: product_bundle.add_product, method: onCreateProductEvent }
+
 fos_rest:
     format_listener:
         rules:
