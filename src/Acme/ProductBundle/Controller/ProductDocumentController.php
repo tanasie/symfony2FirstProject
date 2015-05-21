@@ -3,6 +3,7 @@
 namespace Acme\ProductBundle\Controller;
 
 use Acme\ProductBundle\Document\Product;
+use Acme\ProductBundle\Event\ProductEvent;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,25 +34,16 @@ class ProductDocumentController extends FOSRestController
         return new Response($jsonContent);
     }
 
+    //this is just an example of how event listener works.This is not the best practice for creating dummy data.For dummy data use doctrine data fixtures
 
     public function createProductAction()
     {
-        $product = new Product();
-        $product->setName('product1');
-        $product->setPrice('2');
-        $product->setDescription('lorem ipsum dolor sit amet');
 
-        $dm = $this->get('doctrine_mongodb')->getManager();
+        $dispatcher = $this->container->get('event_dispatcher');
 
-        $dm->persist($product);
-        $dm->flush();
+        $dispatcher->dispatch('product_bundle.add_product', new ProductEvent('product name', '23','some description to test this function'));
 
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new GetSetMethodNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
-        $jsonContent = $serializer->serialize($product, 'json');
-        return new Response($jsonContent);
+        return new Response('created');
     }
 
     /**

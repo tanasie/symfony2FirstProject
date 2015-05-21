@@ -2,18 +2,9 @@
 
 namespace Acme\ProductBundle\Controller;
 
-
-use Acme\ProductBundle\Document\Customer;
-use Acme\ProductBundle\Document\Permission;
 use FOS\RestBundle\Controller\FOSRestController;
 use Guzzle\Http\Client;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations\View;
 use JMS\Serializer\SerializerBuilder;
 
 class CustomerController extends FOSRestController
