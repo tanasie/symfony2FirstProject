@@ -29,6 +29,8 @@ class AppKernel extends Kernel
             new Acme\CategoryBundle\AcmeCategoryBundle(),
             new Acme\ProductBundle\AcmeProductBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new Acme\ElasticaBundle\AcmeElasticaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -11,3 +11,8 @@ acme_product:
     type: rest
     prefix: /
     resource: "@AcmeProductBundle/Resources/config/routing.yml"
+
+acme_elastica:
+    type: rest
+    prefix: /elastica
+    resource: "@AcmeElasticaBundle/Resources/config/routing.yml"
