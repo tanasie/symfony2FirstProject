@@ -1,0 +1,11 @@
+acme_elastica_index:
+    path:      /index
+    defaults:  { _controller: AcmeElasticaBundle:Elastica:index }
+
+acme_elastica_createProduct:
+    path:      /create
+    defaults:  { _controller: AcmeElasticaBundle:Elastica:createProduct }
+
+acme_elastica_updateProduct:
+    path:      /update
+    defaults:  { _controller: AcmeElasticaBundle:Elastica:updateProduct }

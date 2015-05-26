@@ -12,3 +12,5 @@ parameters:
     mailer_password: null
     locale: en
     secret: e14768217f4a11f3b08c5ce8a77e6f8e9223a673
+    elastic_host : localhost
+    elastic_port : 9200

@@ -5,21 +5,25 @@ fos_elastica:
         acme_elastica:
             client: default
             types:
-                article:
+                product:
                     mappings:
                         id:
-                            type: integer
-                        createdAt :
-                            type : date
-                        publishedAt :
-                            type : date
-                        published :
-                            type : boolean
-                        title : ~
-                        content : ~
+                            type: string
+                        name :
+                            type : string
+                        price :
+                            type : float
+                        description :
+                            type : string
                     persistence:
-                        driver: orm
-                        model: Acme\ElasticaBundle\Entity\Article
+                        driver: mongodb
+                        model: Acme\ProductBundle\Document\Product
                         finder: ~
                         provider: ~
                         listener: ~
+        search:
+            types:
+                product:
+                    serializer:
+                        groups: [acme_elastica, Default]
+    serializer: ~

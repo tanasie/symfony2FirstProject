@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: fos_elastica.yml }
 
 framework:
     #esi:             ~
@@ -64,9 +65,6 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
-#Send mail configuration using service container
-imports:
-    - { resource: fos_elastica.yml }
 
 # Swiftmailer Configuration
 swiftmailer:

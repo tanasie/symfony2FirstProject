@@ -4,10 +4,15 @@
 namespace Acme\ProductBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use FOS\ElasticaBundle\Configuration\Search;
 
 /**
  * @MongoDB\Document
+ * @Search(repositoryClass="Acme\ProductBundle\Repository\ProductRepository")
+ * @MongoDB\HasLifecycleCallbacks
+ * @MongoDB\Document(repositoryClass="Acme\ProductBundle\Repository\ProductRepository")
  */
+
 class Product
 {
     /**
