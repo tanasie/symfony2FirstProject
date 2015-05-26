@@ -13,7 +13,7 @@ use Acme\ElasticaBundle\Model\ProductSearch;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use Elastica\Request;
 
-class ProductRepository extends Repository
+class ProductRepository extends DocumentRepository
 {
     public function search(ProductSearch $productSearch)
     {
@@ -21,7 +21,6 @@ class ProductRepository extends Repository
         $client = new Client();
         $index = $client->getIndex('acme_elastica');
         $type = $index->getType('product');
-
         $query = array(
             'query' => array(
                 'multi_match' => array(

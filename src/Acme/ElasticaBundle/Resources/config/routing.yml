@@ -9,3 +9,7 @@ acme_elastica_createProduct:
 acme_elastica_updateProduct:
     path:      /update
     defaults:  { _controller: AcmeElasticaBundle:Elastica:updateProduct }
+
+acme_elastica_searchProduct:
+    path:      /search
+    defaults:  { _controller: AcmeElasticaBundle:Elastica:searchProduct }

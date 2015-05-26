@@ -17,6 +17,30 @@ use Symfony\Component\Form\Forms;
 class ElasticaController extends FOSRestController
 {
 
+    public function searchProductAction()
+    {
+        $finder = $this->container->get('fos_elastica.finder.acme_elastica.product');
+
+        $boolQuery = new Query\Bool();
+
+        $fieldQuery = new Query\Match();
+        $fieldQuery->setFieldQuery('name', 'update2');
+        $boolQuery->addMust($fieldQuery);
+
+        $tagsQuery = new Query\Terms();
+        $tagsQuery->setTerms('price', array('55'));
+        $boolQuery->addMust($tagsQuery);
+
+        $data = $finder->find($boolQuery);
+
+        $serializer = SerializerBuilder::create()->build();
+
+        $jsonContent = $serializer->serialize($data,'json');
+
+        return new Response($jsonContent);
+
+    }
+
     public function indexAction(Request $request)
     {
         $productSearch = new ProductSearch();
@@ -41,6 +65,7 @@ class ElasticaController extends FOSRestController
         ));
     }
 
+    //hard coded document,just for tests
     public function createProductAction()
     {
         $client = new Client();
@@ -54,27 +79,31 @@ class ElasticaController extends FOSRestController
         )));
         $index->refresh();
 
-        exit;
+        return new Response('new document created');
     }
 
     public function updateProductAction()
     {
+
         $client = new Client();
         $index = $client->getIndex('acme_elastica');
         $type = $index->getType('product');
 
-        $type->addDocument(new Document('1',array(
-            "name"        => "update",
-            "price"       => "55",
-            "description" => "updated from controller"
-        )));
+        $document = $type->getDocument('555b4bc849ee12dc0b0041a8');
 
+        $document->set('name','update2');
+
+        $type->addDocument($document);
         $index->refresh();
 
         //to delete an item you need to do this:
         //$type->deleteById("id");
 
-        var_dump('here');exit;
+        $serializer = SerializerBuilder::create()->build();
+
+        $jsonContent = $serializer->serialize($document,'json');
+
+        return new Response($jsonContent);
     }
 
 }

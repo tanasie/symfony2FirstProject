@@ -21,9 +21,4 @@ fos_elastica:
                         finder: ~
                         provider: ~
                         listener: ~
-        search:
-            types:
-                product:
-                    serializer:
-                        groups: [acme_elastica, Default]
     serializer: ~
